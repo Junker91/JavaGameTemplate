@@ -12,12 +12,9 @@ import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	//Dimensions
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
