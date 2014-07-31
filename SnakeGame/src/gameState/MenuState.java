@@ -38,8 +38,9 @@ public class MenuState extends GameState{
 	
 	@Override
 	public void init() {
-		bg = new Background();
-		
+		bg = new Background("/Backgrounds/menubg.gif", 0.0);
+		bg.setPosition(0, 0);
+		bg.setVector(-0.2, 0.0);
 		
 		selected = 0;
 		controls.createKeyBinding("UP", "up");
@@ -52,13 +53,9 @@ public class MenuState extends GameState{
 			
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(menuFont);
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
+		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 	}
 	
@@ -92,7 +89,7 @@ public class MenuState extends GameState{
 
 	@Override
 	public void update() {
-		
+		bg.update();
 		
 	}
 
@@ -100,6 +97,8 @@ public class MenuState extends GameState{
 	public void draw(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D) g;
+		
+		bg.draw(g2d);
 		
 		g2d.setFont(menuFont);
 		
