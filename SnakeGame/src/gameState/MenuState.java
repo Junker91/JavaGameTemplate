@@ -30,6 +30,8 @@ public class MenuState extends GameState{
 	
 	private int selected;
 	
+	private Font menuFont;
+	
 	public MenuState(GameStateManager gsm, JPanel panel) {
 		super(gsm, panel);
 	}
@@ -42,6 +44,21 @@ public class MenuState extends GameState{
 		selected = 0;
 		controls.createKeyBinding("UP", "up");
 		controls.createKeyBinding("DOWN", "down"); 
+		
+		try {
+			File fontFile = new File("Ressources/Fonts/LCD_Solid.ttf");
+			menuFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			menuFont = menuFont.deriveFont(Font.PLAIN, 36);
+			
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(menuFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -83,13 +100,6 @@ public class MenuState extends GameState{
 	public void draw(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D) g;
-		
-		g2d.setRenderingHint(
-				RenderingHints.KEY_TEXT_ANTIALIASING,
-				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		
-		Font menuFont = new Font("Noteworthy", Font.BOLD, 36);
-		
 		
 		g2d.setFont(menuFont);
 		
