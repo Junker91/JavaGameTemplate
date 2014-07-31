@@ -1,14 +1,13 @@
 package main;
 
+import gameState.GameStateManager;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
@@ -21,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	private boolean running = false;
 	private Thread thread;
+	
+	private GameStateManager gsm;
 	
 	public GamePanel() {
 		
@@ -40,6 +41,8 @@ public class GamePanel extends JPanel implements Runnable {
 		this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "close");
 		this.getActionMap().put("close", close );
 		
+		gsm = new GameStateManager(this);
+		
 		start();
 	}
 	
@@ -47,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		
+		gsm.draw(g);
 	}
 	
 	private synchronized void start() {
@@ -97,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 	private void update() {
-		
+		gsm.update();
 	}
 	
 	private void render() {		
