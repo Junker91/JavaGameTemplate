@@ -18,7 +18,9 @@ public class Cheese {
 	
 	private Vector2D pos;
 	
-	public Cheese() {
+	public Cheese(String sheetPath) {
+		loadSprites(sheetPath);
+		
 		pos = new Vector2D(0, 0);
 		setPos();
 	}
@@ -44,7 +46,7 @@ public class Cheese {
 		return sprite;
 	}
 	
-	public void loadSprites(String sheetPath) {
+	private void loadSprites(String sheetPath) {
 
 		BufferedImage sheet = null;
 		try {
