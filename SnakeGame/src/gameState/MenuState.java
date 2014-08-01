@@ -45,6 +45,7 @@ public class MenuState extends GameState{
 		selected = 0;
 		controls.createKeyBinding("UP", "up");
 		controls.createKeyBinding("DOWN", "down"); 
+		controls.createKeyBinding("ENTER", "enter");
 		
 		try {
 			File fontFile = new File("Ressources/Fonts/LCD_Solid.ttf");
@@ -85,6 +86,23 @@ public class MenuState extends GameState{
 			}
 		};
 		controls.storeAction("up", up);
+		
+		Action enter = new AbstractAction() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(selected == 0) {
+					PlayGameState playGame = new PlayGameState(gsm, panel);
+					playGame.loadSprites("/Sprites/snakeSpriteSheet.png");
+					gsm.pushState(playGame);
+				} else if(selected == 1) {
+					//Do something options related
+				} else {
+					System.exit(1);
+				}	
+			}
+		};
+		controls.storeAction("enter", enter);
 	}
 
 	@Override
@@ -94,22 +112,20 @@ public class MenuState extends GameState{
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		
-		Graphics2D g2d = (Graphics2D) g;
+		bg.draw(g);
 		
-		bg.draw(g2d);
-		
-		g2d.setFont(menuFont);
+		g.setFont(menuFont);
 		
 		for(int i = 0; i < options.length; i++) {
 			
 			if(selected == i)
-				g2d.setColor(Color.RED);
+				g.setColor(Color.RED);
 			else
-				g2d.setColor(Color.BLACK);
+				g.setColor(Color.BLACK);
 			
-			g2d.drawString(options[i], getMiddleWidth(g2d, options[i], menuFont), GamePanel.HEIGHT / 2 + i * 50);
+			g.drawString(options[i], getMiddleWidth(g, options[i], menuFont), GamePanel.HEIGHT / 2 + i * 50);
 		}
 		
 	}

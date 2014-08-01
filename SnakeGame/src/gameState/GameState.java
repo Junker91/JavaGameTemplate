@@ -1,6 +1,6 @@
 package gameState;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -24,6 +24,6 @@ public abstract class GameState {
 	
 	public abstract void init();
 	public abstract void update();
-	public abstract void draw(Graphics g);
+	public abstract void draw(Graphics2D g);
 	
 }

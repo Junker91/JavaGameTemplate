@@ -1,6 +1,7 @@
 package gameState;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -26,7 +27,12 @@ public class GameStateManager {
 	}
 	
 	public void draw(Graphics g) {
-		gameStates.peek().draw(g);
+		gameStates.peek().draw((Graphics2D)g);
+	}
+
+	public void pushState(GameState state) {
+		gameStates.push(state);
+		
 	}
 	
 }
