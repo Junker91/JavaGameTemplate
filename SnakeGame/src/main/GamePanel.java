@@ -69,8 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
 		double FPS = 60.0;
 		double ns = 1000000000 / FPS;
 		double delta = 0;
-		int frames = 0;
-		int updates = 0;
+
 		long timer = System.currentTimeMillis();
 		
 		while(running) {
@@ -82,16 +81,13 @@ public class GamePanel extends JPanel implements Runnable {
 			if(delta >= 1) {
 				update();
 				delta--;
-				updates++;
 			}
 			
 			render();
-			frames++;
+
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println(updates + " updates pr. second, frames " + frames + ", size:" + getWidth() + " x " + getHeight());
-				frames = 0;
-				updates = 0;
+
 			}
 			
 		}

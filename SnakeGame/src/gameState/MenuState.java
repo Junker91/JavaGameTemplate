@@ -4,16 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -40,7 +35,7 @@ public class MenuState extends GameState{
 	public void init() {
 		bg = new Background("/Backgrounds/menubg.gif", 0.0);
 		bg.setPosition(0, 0);
-		bg.setVector(-0.2, 0.0);
+		bg.setVector(0.2, 0.0);
 		
 		selected = 0;
 		controls.createKeyBinding("UP", "up");

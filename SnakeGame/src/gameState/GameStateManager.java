@@ -11,11 +11,7 @@ public class GameStateManager {
 
 	private Stack<GameState> gameStates;
 	
-	private JPanel panel;
-	
 	public GameStateManager(JPanel panel) {
-		
-		this.panel = panel;
 		
 		gameStates = new Stack<GameState>();
 		gameStates.push(new MenuState(this, panel));
